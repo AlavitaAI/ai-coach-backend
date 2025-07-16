@@ -5,3 +5,4 @@ docs/*Starting*Strength*.pdf
 docs/*Exercise*Physiology*.pdf
 docs/*Endure*.pdf
 vector_db/chroma.sqlite3
+.env
