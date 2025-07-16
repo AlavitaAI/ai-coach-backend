@@ -4,8 +4,11 @@ from langchain.chat_models import ChatOpenAI
 from langchain.vectorstores import Chroma
 from langchain.embeddings import OpenAIEmbeddings
 import os
+from dotenv import load_dotenv
+import os
 
-os.environ["OPENAI_API_KEY"] = "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"
+load_dotenv()
+api_key = os.getenv("OPENAI_API_KEY")
 
 app = Flask(__name__)
 

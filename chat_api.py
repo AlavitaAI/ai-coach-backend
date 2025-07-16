@@ -5,10 +5,12 @@ from dotenv import load_dotenv
 from langchain.chains import RetrievalQA
 from langchain_chroma import Chroma
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
+from dotenv import load_dotenv
+import os
 
 # Load environment variables
 load_dotenv()
-api_key = os.getenv("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")
+api_key = os.getenv("OPENAI_API_KEY")
 
 app = FastAPI()
 

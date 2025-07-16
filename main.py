@@ -5,6 +5,8 @@ from langchain_community.document_loaders import UnstructuredPDFLoader
 from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_community.vectorstores.utils import filter_complex_metadata  # ✅ Import filter
+from dotenv import load_dotenv
+import os
 
 
 
@@ -17,7 +19,8 @@ except:
     print("⚠️ Could not download 'punkt'. Run manually if needed.")
 
 # ✅ Set API Key
-os.environ["OPENAI_API_KEY"] = "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"
+load_dotenv()
+api_key = os.getenv("OPENAI_API_KEY")
 
 # ✅ Disable OCR to speed up loading and avoid errors
 os.environ["UNSTRUCTURED_OCR_AGENT"] = "none"
