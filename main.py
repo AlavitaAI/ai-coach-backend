@@ -6,10 +6,26 @@ from langchain_community.embeddings import OpenAIEmbeddings
 from langchain_community.vectorstores import Chroma
 from langchain_community.vectorstores.utils import filter_complex_metadata  # ✅ Import filter
 from dotenv import load_dotenv
-import os
+import requests, zipfile
+from pathlib import Path
 
+# ✅ Download vector DB from cloud if not present
+def download_vector_db_if_needed():
+    persist_path = Path("vector_db")
+    if not persist_path.exists():
+        print("⬇️  Downloading vector DB from cloud storage...")
+        url = os.getenv("https://cxtskiburxicfwkmkjod.supabase.co/storage/v1/object/public/ai-coach-db//vector_db.zipL")
+        if not url:
+            print("❌ VECTOR_DB_URL not set in environment.")
+            return
+        response = requests.get(url)
+        with open("vector_db.zip", "wb") as f:
+            f.write(response.content)
+        with zipfile.ZipFile("vector_db.zip", "r") as zip_ref:
+            zip_ref.extractall(".")
+        print("✅ Vector DB downloaded and extracted.")
 
-
+download_vector_db_if_needed()
 
 # ✅ Configure NLTK
 nltk.data.path.append(os.path.expanduser('~/nltk_data'))
