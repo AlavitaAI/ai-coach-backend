@@ -1,0 +1,10 @@
+
+# Oversized files excluded from GitHub
+docs/*Supertraining*.pdf
+docs/*Starting*Strength*.pdf
+docs/*Exercise*Physiology*.pdf
+docs/*Endure*.pdf
+vector_db/chroma.sqlite3
+.env
+.env # skip if already there
+.env
